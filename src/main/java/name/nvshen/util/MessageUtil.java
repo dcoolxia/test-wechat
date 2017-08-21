@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -31,6 +33,8 @@ import name.nvshen.message.response.TextMessage;
  */
 public class MessageUtil {
 
+    static Log log = LogFactory.getLog(MessageUtil.class);
+    
     /**
      * 返回消息类型：文本
      */
@@ -109,8 +113,8 @@ public class MessageUtil {
         SAXReader reader = new SAXReader();
         Document document = reader.read(inputStream);
         
-        System.out.println("请求的的xml==============：");
-        System.out.println(document.asXML());
+        log.info("请求的的xml==============：");
+        log.info(document.asXML());
         
         // 得到xml根元素
         Element root = document.getRootElement();
