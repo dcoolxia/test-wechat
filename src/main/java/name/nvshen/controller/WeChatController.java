@@ -19,7 +19,7 @@ import name.nvshen.util.MessageUtil;
 public class WeChatController {
 
     @Autowired
-    private WeChatTextService textServer;
+    private WeChatTextService textService;
     
     @RequestMapping(value = "/", method = { RequestMethod.POST }, produces="text/html;charset=UTF-8")
     @ResponseBody
@@ -52,7 +52,7 @@ public class WeChatController {
             // 文本消息
             if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
                 //respContent = "您发送的是文本消息！";
-                respContent = textServer.getText(requestMap.get("Content"));
+                respContent = textService.getText(requestMap.get("Content"));
             }
             // 图片消息
             else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {

@@ -33,8 +33,10 @@ public class ConfigController {
      */
     @RequestMapping(value = "/", method = { RequestMethod.GET })
     @ResponseBody
-    public String requestByGet(@RequestParam("signature") String signature, @RequestParam("timestamp") String timestamp,
-            @RequestParam("nonce") String nonce, @RequestParam("echostr") String echostr) {
+    public String requestByGet(@RequestParam("signature") String signature,
+            @RequestParam("timestamp") String timestamp,
+            @RequestParam("nonce") String nonce,
+            @RequestParam("echostr") String echostr) {
 
         String token = "xiaoqi";
 
@@ -46,9 +48,9 @@ public class ConfigController {
         Collections.sort(list);
 
         String str = list.get(0) + list.get(1) + list.get(2);
-        System.out.println(DigestUtils.sha1Hex(str));
+        System.out.println("加密后："+DigestUtils.sha1Hex(str));
 
-        System.out.println(signature);
+        System.out.println("传入    ："+signature);
 
         return echostr;
     }
