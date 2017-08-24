@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 微信配置
+ * @author David
+ *
+ */
 @Controller
 public class ConfigController {
 

@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+/**
+ * 心跳测试
+ * @author David
+ *
+ */
 @Controller
 public class TickController {
 	

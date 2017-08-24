@@ -21,6 +21,11 @@ import name.nvshen.message.response.TextMessage;
 import name.nvshen.service.WeChatTextService;
 import name.nvshen.util.MessageUtil;
 
+/**
+ * 微信请求
+ * @author David
+ *
+ */
 @Controller
 public class WeChatController {
 

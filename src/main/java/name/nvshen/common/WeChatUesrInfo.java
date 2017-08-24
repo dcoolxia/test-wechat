@@ -29,8 +29,8 @@ public class WeChatUesrInfo {
      */
     public HashMap<String, String> getUserInfo(String openId) throws Exception {
         
-        String token = "esHaqHK3-GAO9_nCEt0Y55NPHAFJ1YWJUM0hK_qLyDa6XEX"
-                + "wOxRfWDz-oaJSgaC8fOIm4uO666nd2lVonyWNqz06jBJmhAztoLZf1_WNRm95N4L14v1esV5JOk0tiR_uGDHfADAZWA";
+        String token = "jIJVDIXP795S_YU26KontDNM2RyRMWOdTv7q8yJChR0PG"
+                + "sQ7x1NtPm3uwa0NuPjHyeikXRjp4U0Jza00RAdgtjfLYhP5qDTy47TiuJV29zsCRUbAJAQFI";
         
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("access_token", token);

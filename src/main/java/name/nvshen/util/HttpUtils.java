@@ -30,23 +30,19 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 /**
- * ClassName: HttpUtils
- * 
- * @Description: http请求工具类
- * @author dapengniao
- * @date 2016年3月10日 下午3:57:14
+ * http请求工具类
+ * @author David
+ *
  */
 @SuppressWarnings("deprecation")
 public class HttpUtils {
  
     /**
-     * @Description: http get请求共用方法
-     * @param @param reqUrl
-     * @param @param params
-     * @param @return
-     * @param @throws Exception
-     * @author dapengniao
-     * @date 2016年3月10日 下午3:57:39
+     * http get请求共用方法
+     * @param reqUrl
+     * @param params
+     * @return
+     * @throws Exception
      */
     @SuppressWarnings("resource")
     public static String sendGet(String reqUrl, Map<String, String> params)
@@ -75,13 +71,11 @@ public class HttpUtils {
     }
  
     /**
-     * @Description: http post请求共用方法
-     * @param @param reqUrl
-     * @param @param params
-     * @param @return
-     * @param @throws Exception
-     * @author dapengniao
-     * @date 2016年3月10日 下午3:57:53
+     * http post请求共用方法
+     * @param reqUrl
+     * @param params
+     * @return
+     * @throws Exception
      */
     @SuppressWarnings("resource")
     public static String sendPost(String reqUrl, Map<String, String> params)
@@ -124,14 +118,12 @@ public class HttpUtils {
     }
  
     /**
-     * @Description: http post请求json数据
-     * @param @param urls
-     * @param @param params
-     * @param @return
-     * @param @throws ClientProtocolException
-     * @param @throws IOException
-     * @author dapengniao
-     * @date 2016年3月10日 下午3:58:15
+     * http post请求json数据
+     * @param urls
+     * @param params
+     * @return
+     * @throws ClientProtocolException
+     * @throws IOException
      */
     public static String sendPostBuffer(String urls, String params)
             throws ClientProtocolException, IOException {
@@ -150,12 +142,10 @@ public class HttpUtils {
     }
  
     /**
-     * @Description: http请求发送xml内容
-     * @param @param urlStr
-     * @param @param xmlInfo
-     * @param @return
-     * @author dapengniao
-     * @date 2016年3月10日 下午3:58:32
+     * http请求发送xml内容
+     * @param urlStr
+     * @param xmlInfo
+     * @return
      */
     public static String sendXmlPost(String urlStr, String xmlInfo) {
         // xmlInfo xml具体字符串
