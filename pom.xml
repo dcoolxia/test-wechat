@@ -39,7 +39,10 @@
     <commons-utill-httpClient.version>1.2.0</commons-utill-httpClient.version>
     <architecture-redis.version>1.1.1</architecture-redis.version>
     <druid.version>1.0.16</druid.version>
+    <httpclient.version>4.5.3</httpclient.version>
+    <quartz.version>2.2.1</quartz.version>
   </properties>
+  
   <dependencies>
     <!-- spring -->
     <dependency>
@@ -137,6 +140,13 @@
       <version>${druid.version}</version>
     </dependency>
     
+    <!-- httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+    
     <!-- servlet -->
     <dependency>
        <groupId>javax.servlet</groupId>
@@ -144,11 +154,25 @@
        <version>3.0.1</version>
     </dependency>
     
+    <!-- quzrtz -->
+    <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
+    </dependency>
+    
     <!-- xml -->
     <dependency>
 		<groupId>dom4j</groupId>
 		<artifactId>dom4j</artifactId>
 		<version>1.6.1</version>
+    </dependency>
+    
+    <!-- fastjson -->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
     </dependency>
     
 	<dependency>

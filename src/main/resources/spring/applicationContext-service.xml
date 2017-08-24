@@ -8,7 +8,15 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-	<!-- 配置包扫描器 -->
-	<context:component-scan base-package="name.nvshen"/>
-	
+    <!-- 配置包扫描器 -->
+    <context:component-scan base-package="name.nvshen"/>
+    
+    <!-- 加载properties文件 -->
+    <bean id="appProperty" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+                <value>classpath:conf/wechat.properties</value>
+            </array>
+        </property>
+    </bean>
 </beans>
