@@ -1,4 +1,4 @@
-package name.nvshen.common;
+package name.nvshen.job;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

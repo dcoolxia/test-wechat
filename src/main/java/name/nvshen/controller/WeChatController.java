@@ -1,6 +1,9 @@
 package name.nvshen.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import name.nvshen.common.WeChatUesrInfo;
+import name.nvshen.message.response.Article;
+import name.nvshen.message.response.NewsMessage;
 import name.nvshen.message.response.TextMessage;
 import name.nvshen.service.WeChatTextService;
 import name.nvshen.util.MessageUtil;
@@ -20,6 +26,8 @@ public class WeChatController {
 
     @Autowired
     private WeChatTextService textService;
+    @Autowired
+    private WeChatUesrInfo weChatUesrInfo;
     
     @RequestMapping(value = "/", method = { RequestMethod.POST }, produces="text/html;charset=UTF-8")
     @ResponseBody
@@ -76,7 +84,27 @@ public class WeChatController {
                 String eventType = requestMap.get("Event");
                 // 订阅
                 if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-                    respContent = "谢谢您的关注！";
+                    NewsMessage newsMessage = new NewsMessage();
+                    newsMessage.setToUserName(fromUserName);
+                    newsMessage.setFromUserName(toUserName);
+                    newsMessage.setCreateTime(new Date().getTime());
+                    newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
+                    newsMessage.setFuncFlag(0);
+                    
+                    HashMap<String, String> userInfo = weChatUesrInfo.getUserInfo(fromUserName);
+                    
+                    Article article=new Article();
+                    article.setDescription("爱的路上携手一起走！"); //图文消息的描述
+                    article.setPicUrl(userInfo.get("headimgurl")); //图文消息图片地址
+                    article.setTitle("亲爱的："+userInfo.get("nickname")+",么么哒！"); //图文消息标题
+                    article.setUrl("https://www.baidu.com/s?wd=%E4%B8%BA%E4%BB%80%E4%B9%88%E9%82%A3%E4%B9%88%E5%96%9C%E6%AC%A2%E6%9F%B3%E6%9F%B3"
+                            + "&rsv_spt=1&rsv_iqid=0xb7ce597900212ce2&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&"
+                            + "tn=baiduhome_pg&rsv_enter=1&rsv_sug3=9&rsv_sug1=5&rsv_sug7=100"); //图文url链接
+                    List<Article> list=new ArrayList<Article>();
+                    list.add(article); //这里发送的是单图文，如果需要发送多图文则在这里list中加入多个Article即可！
+                    newsMessage.setArticleCount(list.size());
+                    newsMessage.setArticles(list);
+                    return MessageUtil.newsMessageToXml(newsMessage);
                 }
                 // 取消订阅
                 else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {
