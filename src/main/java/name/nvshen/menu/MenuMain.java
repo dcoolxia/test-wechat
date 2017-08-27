@@ -1,5 +1,8 @@
 package name.nvshen.menu;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 
 import name.nvshen.util.HttpUtils;
@@ -12,13 +15,21 @@ import name.nvshen.util.HttpUtils;
 public class MenuMain {
  
     public static void main(String[] args) {
+        String accessToken = "WsOnYaP_E81N2Ylm-pWLP7fK2lgaFZPgH2llQYhTDN-4SJSlP"
+                + "fq6jh-C9NpGMgiPcTdX1kxsTN7B5p_bwQGYiXjWUN6ydvpqO2QGTkfwWjMY_-yHNhLz2n49fIgTJRgbAJKcAIAFOP";
         
+//        createMenu(accessToken);
+        
+        queryMenu(accessToken);
+        
+//        removeMenu(accessToken);
     }
     
     /**
      * 创建菜单
+     * @param accessToken
      */
-    public static void createMenu(){
+    public static void createMenu(String accessToken){
         //定义第一个视图型按钮
         ViewButton viewButton1 = new ViewButton();
         viewButton1.setName("百度");
@@ -52,9 +63,6 @@ public class MenuMain {
         
         System.out.println(jsonMenu);
         
-        String accessToken = "WsOnYaP_E81N2Ylm-pWLP7fK2lgaFZPgH2llQYhTDN-4SJSlP"
-                + "fq6jh-C9NpGMgiPcTdX1kxsTN7B5p_bwQGYiXjWUN6ydvpqO2QGTkfwWjMY_-yHNhLz2n49fIgTJRgbAJKcAIAFOP";
-        
         String url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + accessToken;
         
         try{
@@ -64,6 +72,38 @@ public class MenuMain {
             System.out.println("请求错误！");
         }
         
+    }
+    
+    /**
+     * 查询菜单
+     * @param accessToken
+     */
+    public static void queryMenu(String accessToken){
+        String url = "https://api.weixin.qq.com/cgi-bin/menu/get";
+        Map<String, String> params = new HashMap<>();
+        params.put("access_token", accessToken);
+        try{
+            String result = HttpUtils.sendGet(url, params);
+            System.out.println(result);
+        }catch(Exception e){
+            System.out.println("请求错误！");
+        }
+    }
+    
+    /**
+     * 删除菜单
+     * @param accessToken
+     */
+    public static void removeMenu(String accessToken){
+        String url = "https://api.weixin.qq.com/cgi-bin/menu/delete";
+        Map<String, String> params = new HashMap<>();
+        params.put("access_token", accessToken);
+        try{
+            String result = HttpUtils.sendGet(url, params);
+            System.out.println(result);
+        }catch(Exception e){
+            System.out.println("请求错误！");
+        }
     }
  
 }

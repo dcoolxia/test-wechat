@@ -119,15 +119,15 @@ public class HttpUtils {
  
     /**
      * http post请求json数据
-     * @param urls
+     * @param url
      * @param params
      * @return
      * @throws ClientProtocolException
      * @throws IOException
      */
-    public static String sendPostBuffer(String urls, String params)
+    public static String sendPostBuffer(String url, String params)
             throws ClientProtocolException, IOException {
-        HttpPost request = new HttpPost(urls);
+        HttpPost request = new HttpPost(url);
  
         StringEntity se = new StringEntity(params, HTTP.UTF_8);
         request.setEntity(se);
