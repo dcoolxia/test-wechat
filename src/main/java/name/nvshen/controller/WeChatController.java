@@ -117,7 +117,7 @@ public class WeChatController {
                 }
                 // 自定义菜单点击事件
                 else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) {
-                    // TODO 自定义菜单权没有开放，暂不处理该类消息
+                    respContent = requestMap.get("EventKey");
                 }
             }
 
