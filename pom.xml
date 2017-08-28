@@ -41,6 +41,7 @@
     <druid.version>1.0.16</druid.version>
     <httpclient.version>4.5.3</httpclient.version>
     <quartz.version>2.2.1</quartz.version>
+    <jedis.version>2.9.0</jedis.version>
   </properties>
   
   <dependencies>
@@ -159,6 +160,13 @@
         <groupId>org.quartz-scheduler</groupId>
         <artifactId>quartz</artifactId>
         <version>${quartz.version}</version>
+    </dependency>
+    
+    <!-- jedis -->
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>${jedis.version}</version>
     </dependency>
     
     <!-- xml -->
