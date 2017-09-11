@@ -53,9 +53,12 @@ public class ConfigController {
         Collections.sort(list);
 
         String str = list.get(0) + list.get(1) + list.get(2);
-        System.out.println("加密后："+DigestUtils.sha1Hex(str));
 
-        System.out.println("传入    ："+signature);
+        System.out.println("传入signature："+signature);
+        System.out.println("加密后signature："+DigestUtils.sha1Hex(str));
+        System.out.println("timestamp："+timestamp);
+        System.out.println("nonce："+nonce);
+        System.out.println("echostr："+echostr);
 
         return echostr;
     }
