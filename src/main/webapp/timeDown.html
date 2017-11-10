@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>   
+<html>  
+<title>timedown</title>
+<head>  
+<meta charset="utf-8"/>
+<script type="text/javascript" src="jquery.js"></script>  
+<script type="text/javascript">  
+	var downTime = null;//定义倒计时变量
+	$(function(){
+		//因为ios应用页面是不会刷新的
+		var timeCount = 60; //定义倒计时总数
+		var start_time = new Date();
+		start_time = start_time.getTime();//获取开始时间的毫秒数
+
+		downTime = setInterval(function(){
+			//倒计时实时结束时间
+			var end_time = new Date();
+			end_time = end_time.getTime();
+			//得到剩余时间
+			var dtime = timeCount - Math.floor((end_time - start_time) / 1000);
+			
+			var minT = Math.floor(dtime / 60); //剩余的分
+            var secT = dtime % 60; //剩余的秒
+			
+			//往分的span里塞值
+            if (minT >= 10) {
+                $("#min").text(minT);
+            } else if (minT < 10 && minT >= 1) {
+                $("#min").text("0" + minT);
+            } else if (minT < 1) {
+                $("#min").text("00");
+            }
+
+			//往秒的span里塞值
+            if (secT >= 10) {
+                $("#sec").text(secT);
+            } else if (secT < 10 && secT >= 0) {
+                $("#sec").text("0" + secT);
+                if (minT == 0 && secT == 0) {
+					alert("倒计时结束");               
+                    window.clearInterval(downTime);
+					downTime = null;
+                }
+            }
+		},1000);
+	})
+</script>  
+</head>  
+<body>  
+	<div>
+		剩余<span id="min" style="margin-left:5px;color:red;font-weight:bold;"></span>分<span id="sec" style="margin-left:5px;color:red;font-weight:bold;"></span>秒
+	</div>
+</body>  
+</html>  
+
